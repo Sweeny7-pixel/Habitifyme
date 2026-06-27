@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "required": ["id", "name", "category", "mechanic", "equipment", "primaryMuscles", "difficulty", "instructions", "images"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "name": { "type": "string" },
+    "category": { "type": "string", "enum": ["Chest", "Back", "Shoulders", "Arms", "Legs", "Core"] },
+    "mechanic": { "type": "string", "enum": ["compound", "isolation"] },
+    "equipment": { "type": "string", "enum": ["barbell", "dumbbell", "cable", "machine", "bodyweight"] },
+    "primaryMuscles": { "type": "array", "items": { "type": "string" } },
+    "secondaryMuscles": { "type": "array", "items": { "type": "string" } },
+    "difficulty": { "type": "string", "enum": ["beginner", "intermediate", "advanced"] },
+    "instructions": { "type": "array", "items": { "type": "string" }, "minItems": 2 },
+    "images": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "video": { "type": "string" },
+    "gymbuddy": {
+      "type": "object",
+      "properties": {
+        "priority": { "type": "integer", "enum": [1, 2, 3] },
+        "dayTag": { "type": "string" },
+        "setsRep": { "type": "string" },
+        "progressionNote": { "type": "string" }
+      }
+    }
+  }
+}
